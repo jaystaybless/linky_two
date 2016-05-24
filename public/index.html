@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>Angular Linky</title>
+        <meta charset="utf-8" />
+       
+        <script src="https://code.angularjs.org/1.5.0/angular.js"></script>
+        <script src="https://code.angularjs.org/1.5.0/angular-route.js"></script>
+        <script src="js/client.js"></script>   
+			
+    </head>
+
+    <body>
+        <div>
+            <div>
+                    <div class="container" ng-controller="indexController">
+                        <span ng-cloak>{{message}}</span>
+                    </div>
+            </div>
+
+
+
+            <div>
+
+                    <h3>Partials Menu</h3>
+
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="#/categories">Categories</a></li>
+                        <li><a href="#/sub_categories">Sub Category</a></li>
+                    </ul>
+
+                    <div ng-view></div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
