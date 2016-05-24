@@ -6,7 +6,17 @@
        
         <script src="https://code.angularjs.org/1.5.0/angular.js"></script>
         <script src="https://code.angularjs.org/1.5.0/angular-route.js"></script>
-        <script src="js/client.js"></script>   
+		
+		<!-- module -->
+        <script src="js/client.js"></script> 
+
+		<!-- controllers -->
+		<script src="js/assets/categories/categoriesController.js"></script>  
+		<script src="js/assets/sub_categories/sub_categoriesController.js"></script> 
+		<script src="js/assets/links/linksController.js"></script>  
+		<!-- authentcation controllers -->
+		<script src="js/assets/authentication/register/registerController.js"></script> 
+		<script src="js/assets/authentication/login/loginController.js"></script> 		
 			
     </head>
 
@@ -14,22 +24,26 @@
         <div>
             <div>
                     <div class="container" ng-controller="indexController">
+						
+						
                         <span ng-cloak>{{message}}</span>
+						
                     </div>
             </div>
-
-
-
-            <div>
-
-                    <h3>Partials Menu</h3>
 
                     <ul>
                         <li><a href="index.html">HOME</a></li>
                         <li><a href="#/categories">Categories</a></li>
                         <li><a href="#/sub_categories">Sub Category</a></li>
+						<li><a href="#/links">Links</a></li>
+                        <li><a href="#/register">Register</a></li>
+						<li><a href="#/login">Login</a></li>
+						<li><a href="#/logout">Logout</a></li>
                     </ul>
 
+            <div>
+
+                    <h3>Partials</h3>
                     <div ng-view></div>
 
             </div>
