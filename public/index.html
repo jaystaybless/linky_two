@@ -3,8 +3,12 @@
     <head>
         <title>Angular Linky</title>
         <meta charset="utf-8" />
-       
-        <script src="https://code.angularjs.org/1.5.0/angular.js"></script>
+		<!-- style sheets -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">    
+		<!-- app specific stylesheet --> 
+		<link rel="stylesheet" href="css/style.css"> 
+
+	   <script src="https://code.angularjs.org/1.5.0/angular.js"></script>
         <script src="https://code.angularjs.org/1.5.0/angular-route.js"></script>
 		
 		<!-- module -->
@@ -24,24 +28,15 @@
         <div>
             <div>
                     <div class="container" ng-controller="indexController">
-						
+						<div ng-include="navbar"></div>
 						
                         <span ng-cloak>{{message}}</span>
 						
                     </div>
             </div>
 
-                    <ul>
-                        <li><a href="index.html">HOME</a></li>
-                        <li><a href="#/categories">Categories</a></li>
-                        <li><a href="#/sub_categories">Sub Category</a></li>
-						<li><a href="#/links">Links</a></li>
-                        <li><a href="#/register">Register</a></li>
-						<li><a href="#/login">Login</a></li>
-						<li><a href="#/logout">Logout</a></li>
-                    </ul>
 
-            <div>
+            <div class="container">
 
                     <h3>Partials</h3>
                     <div ng-view></div>

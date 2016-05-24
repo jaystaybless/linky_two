@@ -31,5 +31,6 @@ app.config(function($routeProvider, $locationProvider){
 
 app.controller('indexController', function($scope){
     console.log("Index page has loaded")
-      $scope.message = "Welcome to the Hardware Store";  
+		$scope.message = "Welcome to the Hardware Store"; 
+		$scope.navbar = "js/assets/navbar/navbar.html"; 	  
 });
