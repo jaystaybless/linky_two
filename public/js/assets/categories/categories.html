@@ -1,4 +1,31 @@
 <div>
 	<h1>{{message}}</h1>
+	<table class="table">
+		<thead>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+				
+					<tr>
+						<td><input class="form-control" ng-model="categories.name" name="name"></td>
+						<td><input class="form-control" ng-model="categories.description" name="description"></td>
+						<td><button class="btn btn-primary" ng-click="add()"> Add </button></td>						
+					</tr>
+					<tr ng-repeat="categories in categorieslist"> 
+						<!-- <td> <a href='/dashboard.html'> {{categories.name}} </a> </td> -->
+						<td> <input class="form-control" ng-model="categories.name" name="name" {{categories.name}} > </a> </td>  
+						<td> <input class="form-control" ng-model="categories.description" name="description" {{categories.description}} ></td>
+						<td><button class="btn btn-danger" ng-click="remove(categories.blogs_id)">Delete</button></td>
+						<td><button class="btn btn-warning" ng-click="edit(categories.blogs_id)">Edit</button></td>
+						<td><button class="btn btn-info" ng-click="update(categories)">Update</button></td>
+					</tr>
+				</tbody>
+			</table>
 	
 </div>
