@@ -19,12 +19,22 @@ refresh();
 		})
 	} 
 	
+	$scope.remove = function(categories_id) {
+		console.log(categories_id)
+		$http.delete('/categories/' + categories_id).success(function(response) {
+			refresh();
+		})
+		
+	}
 	
-	
-	
-	
-	
-	
-	
+	$scope.update = function(categories) {
+
+		console.log('client put ')
+		console.log(categories)
+		$http.put('/categories/' + categories.categories_id, categories).success(function(response) {
+			console.log('put')
+			refresh();
+		})
+	}
       $scope.message = "Welcome to the Categories Page";  
 });

@@ -3,6 +3,7 @@ var router = express.Router();
 var db = require('../database/db').db;
 var connection = require('../database/db').connection;
 
+//categories routes
 router.get('/categories', function (req, res) {
 	console.log('CATEGORIES page recieved a GET request');
 
@@ -20,7 +21,6 @@ router.get('/categories', function (req, res) {
 });
 
 router.post('/categories', function (req, res) {
-
 	console.log('CATEGORIES page recieved a POST request');
 
 	var createCategories = 'INSERT INTO categories SET ?';
@@ -44,6 +44,52 @@ router.post('/categories', function (req, res) {
 
 	 })
 })
+
+
+router.delete('/categories/:id', function(req, res) {
+	console.log('CATEGORIES page recieved a DELETE request');
+	var id = req.params.id;
+	console.log(id)
+	
+	var deleteCategory = 'DELETE FROM categories WHERE categories_id = ?'
+	
+	var categories = {
+		name: req.body.name,
+		description: req.body.description,
+		categories_id: id //req.session.user.id //this needs changing to req.session.user.id
+	};
+
+	var query = connection.query(deleteCategory, categories.categories_id, function (error, result) {
+	if(error) {
+		console.error(error);
+		return;
+	}
+	res.json(result)
+	console.log(result);
+	});
+});
+
+
+router.put('/categories/:id', function(req, res) {
+	console.log('CATEGORIES page recieved a PUT request');	
+	var id = req.params.id;
+	
+	var categories = {
+		name: req.body.name,
+		description: req.body.description,
+		categories_id: id //req.session.user.id //this needs changing to req.session.user.id
+	};
+	
+	var updateCategory = 'UPDATE categories SET name = ?, description = ? WHERE categories_id = ?';
+	var query = connection.query(updateCategory, [categories.name, categories.description, categories.categories_id], function (error, result) {
+	if(error) {
+		console.error(error);
+		return;
+	}
+	res.json(result)
+	console.log(result);
+	});
+});
 
 
 router.get('*', function (req, res) {
