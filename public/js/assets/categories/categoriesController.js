@@ -10,6 +10,14 @@ app.controller('categoriesController', function($scope, $http){
 }
 
 refresh();
+
+	$scope.add = function() {
+		console.log($scope.categories)
+		$http.post('/categories', $scope.categories).success(function(response) {
+			console.log(response)
+			refresh();
+		})
+	} 
 	
 	
 	
