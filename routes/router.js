@@ -117,13 +117,28 @@ router.put('/categories/:id', function(req, res) {
 
 //SUB CATEGORIES routes
 
+router.get('/sub_categories/:id', function(req, res) {
+	console.log('SUB CATEGORIES page recieved a GET request');
+	var id = req.params.id;	
+	console.log(id)
+	var categories_id = id
+	
+	var selectAllSubCategoriesForCategory = 'SELECT * FROM sub_categories WHERE categories_id = ?';
+	
+	connection.query(selectAllSubCategoriesForCategory, categories_id, function(error, result) {
+			res.json(result)
+			console.log(result)
+	})
+	
+})
+
 router.post('/categories/:id/sub_categories/', function (req, res) {
 	console.log('SUB CATEGORIES page recieved a POST request');
 	var id = req.params.id;
 	console.log(id)
 	
 	var createSubCategories = 'INSERT INTO sub_categories SET ?';
-	var selectAllSubCategories = 'SELECT * FROM sub_categories';
+	var selectAllSubCategoriesForCategory = 'SELECT * FROM sub_categories WHERE categories_id = ?';
 	
 	var subCategory = {
 		name: req.body.name,
@@ -138,7 +153,7 @@ router.post('/categories/:id/sub_categories/', function (req, res) {
 			console.error(error);
 			return;
 		}
-		connection.query(selectAllSubCategories, function(error, result) {
+		connection.query(selectAllSubCategoriesForCategory, subCategory.categories_id, function(error, result) {
 			res.json(result)
 			console.log(result)
 		})
