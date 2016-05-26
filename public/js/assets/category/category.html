@@ -3,6 +3,7 @@
 	<table class="table">
 		<thead>
 					<tr>
+						<th>ID</th>
 						<th>Name</th>
 						<th>Description</th>
 						<th></th>
@@ -19,7 +20,57 @@
 						<td> <input class="form-control" ng-model="category.description" name="description" {{category.description}} ></td>
 						<td><button class="btn btn-danger" ng-click="remove(category.categories_id)">Delete</button></td>
 						<td><button class="btn btn-info" ng-click="update(category)">Update</button></td>
+				</tr>					
+				</tbody>
+			</table>
+			
+			
+			<table class="table">
+			<h3><strong> Add Sub Categories</strong><h3>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th></th>
+						<th></th>
+						<th></th>
 					</tr>
+				</thead>
+				<tbody>
+			
+					<!-- add subcategories to this category -->	
+					<tr>
+
+						<td><input class="form-control" ng-model="category.name" name="name"></td>
+						<td><input class="form-control" ng-model="category.description" name="description"></td>
+						<td><button class="btn btn-primary" ng-click="addSubCategory()"> Add </button></td>						
+					</tr>
+
+					
+				</tbody>
+			</table>
+			
+			
+			<table class="table">
+			<h4><strong> Add Sub Categories</strong><h4>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- add links to this category -->	
+					<tr>
+						<td><p><strong> Add links</strong></p></td>
+						<td><input class="form-control" ng-model="categories.name" name="name"></td>
+						<td><input class="form-control" ng-model="categories.description" name="description"></td>
+						<td><button class="btn btn-primary" ng-click="addLink()"> Add </button></td>						
+					</tr>
+					
 				</tbody>
 			</table>
 	

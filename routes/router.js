@@ -3,7 +3,7 @@ var router = express.Router();
 var db = require('../database/db').db;
 var connection = require('../database/db').connection;
 
-//categories routes
+//CATEGORIES routes
 router.get('/categories', function (req, res) {
 	console.log('CATEGORIES page recieved a GET request');
 
@@ -113,6 +113,17 @@ router.put('/categories/:id', function(req, res) {
 	console.log(result);
 	});
 });
+
+
+//SUB CATEGORIES routes
+
+router.post('/categories/:id/sub_categories/', function (req, res) {
+	console.log('SUB CATEGORIES page recieved a POST request');
+	
+	var id = req.params.id;
+	console.log(id)
+	
+})
 
 
 router.get('*', function (req, res) {
