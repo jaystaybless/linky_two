@@ -3,9 +3,10 @@
 	<table class="table">
 		<thead>
 					<tr>
+						<th></th>
 						<th>Name</th>
 						<th>Description</th>
-						<th></th>
+						<th>Action</th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -14,15 +15,15 @@
 				
 					<tr>
 						<td></td>
-						<td><input class="form-control" ng-model="categories.name" name="name"></td>
-						<td><input class="form-control" ng-model="categories.description" name="description"></td>
+						<td><input class="form-control" ng-model="categories.name" name="name" placeholder="Write a name"></td>
+						<td><input class="form-control" ng-model="categories.description" name="description" placeholder="Write a description"></td>
 						<td><button class="btn btn-primary" ng-click="add()"> Add </button></td>						
 					</tr>					
 					<tr ng-repeat="categories in categorieslist"> 
 						<!-- link to a specific category </td> -->
 						<td>
-							<a href="#categories/{{categories.categories_id}}" class="btn btn-default navbar-btn">
-								{{categories.categories_id}}
+							<a href="#categories/{{categories.categories_id}}" class="btn btn-success navbar-btn">
+								Got to {{categories.name}}
 							</a>
 						</td>
 						<!-- the link below is not necessary, which means the code in the categoriesController is not needed as the categoryController handles this 
