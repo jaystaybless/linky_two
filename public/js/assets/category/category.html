@@ -24,7 +24,11 @@
 						<td><button class="btn btn-info" ng-click="update(category)">Update</button></td>
 						<td><button class="btn btn-warning" ng-click="getSubCategories(subCategory)">View All Sub Caegories</button></td>
 						
-						<td><button class="btn btn-success" ng-click="">Sub Caegories</button></td>
+						<td>
+							<a href="#category/{{category.categories_id}}/sub_categories" class="btn btn-success navbar-btn">
+								{{category.categories_id}} Sub Categories
+							</a>
+						</td>
 						
 				</tr>					
 				</tbody>

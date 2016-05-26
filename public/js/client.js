@@ -10,9 +10,9 @@ app.config(function($routeProvider, $locationProvider){
 		.when('/category/:categories_id',{
 			templateUrl: 'js/assets/category/category.html',
 			controller: 'categoryController'})
-        .when('/sub_categories', {
+		.when('/category/:categories_id/sub_categories', {
 			templateUrl: 'js/assets/sub_categories/sub_categories.html', 
-			controller: 'sub_categoryController'})
+			controller: 'sub_categoryController'})	
 		.when('/links', {
 			templateUrl: 'js/assets/links/links.html', 
 			controller: 'linksController'})

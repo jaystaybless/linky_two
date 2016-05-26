@@ -21,10 +21,17 @@
 					<tr ng-repeat="categories in categorieslist"> 
 						<!-- link to a specific category </td> -->
 						<td>
+							<a href="#category/{{categories.categories_id}}" class="btn btn-default navbar-btn">
+								{{categories.categories_id}}
+							</a>
+						</td>
+						<!-- the link below is not necessary, which means the code in the categoriesController is not needed as the categoryController handles this 
+						<td>
 							<a href="#category/{{categories.categories_id}}" class="btn btn-default navbar-btn" ng-click="specific(categories)">
 								{{categories.categories_id}}
 							</a>
 						</td> 
+						-->
 						
 						<td> <input class="form-control" ng-model="categories.name" name="name" {{categories.name}} > </a> </td>  
 						<td> <input class="form-control" ng-model="categories.description" name="description" {{categories.description}} ></td>

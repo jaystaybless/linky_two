@@ -27,3 +27,21 @@ app.controller('categoryController', function($scope, $http, $routeParams){
 
       $scope.message = "Welcome to the Category Page";  
 });
+
+
+
+	$scope.specific = function(categories) {
+		console.log(categories.categories_id);
+		$http.get('/categories/' + categories.categories_id).success(function(response) {
+			console.log('specific from Categories controller');
+			console.log(response)
+			$scope.categories = response;
+			//$scope.categories = "";
+		});
+	}
+	
+	/*			
+        .when('/sub_categories', {
+			templateUrl: 'js/assets/sub_categories/sub_categories.html', 
+			controller: 'sub_categoryController'})
+*/

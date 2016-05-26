@@ -6,7 +6,6 @@ app.controller('categoryController', function($scope, $http, $routeParams){
 	
 	var refresh = function () {
 		$http.get('/categories/' + categories_id).success(function(response) {
-		//console.log('specific now complete on client');
 		$scope.categoryDetails = response;
 		$scope.category = "";
 		})
