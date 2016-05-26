@@ -4,18 +4,22 @@ app.controller('categoryController', function($scope, $http, $routeParams){
 
 	var categories_id = $routeParams.categories_id
 	
-	$http.get('/categories/' + categories_id).success(function(response) {
+	var refresh = function () {
+		$http.get('/categories/' + categories_id).success(function(response) {
 		console.log('specific now complete on client');
-		$scope.categoryDetails = response
-	})
-	
+		$scope.categoryDetails = response;
+		$scope.category = "";
+		})
+	}
+refresh()
 	
 	$scope.addSubCategory = function() {
-		console.log(categories_id)
-		console.log($scope.category)
-		$http.post('/categories/' + categories_id + '/sub_categories', $scope.category).success(function(response) {
+		//console.log(categories_id)
+		//console.log($scope.category)
+		//console.log($scope.subCategory)
+		$http.post('/categories/' + categories_id + '/sub_categories', $scope.subCategory).success(function(response) {
 			console.log(response)
-			
+			refresh()
 		})
 		
 		}
