@@ -11,6 +11,16 @@ app.controller('categoriesController', function($scope, $http){
 
 refresh();
 
+	$scope.specific = function(categories) {
+		console.log(categories.categories_id);
+		$http.get('/categories/' + categories.categories_id).success(function(response) {
+			console.log('specific from Categories controller');
+			console.log(response)
+			$scope.categories = response;
+			//$scope.categories = "";
+		});
+	}
+
 	$scope.add = function() {
 		console.log($scope.categories)
 		$http.post('/categories', $scope.categories).success(function(response) {

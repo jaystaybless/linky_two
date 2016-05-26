@@ -20,6 +20,29 @@ router.get('/categories', function (req, res) {
 	
 });
 
+router.get('/categories/:id', function(req, res) {
+	console.log('CATEGORIES specific page recieved a GET request');
+	var id = req.params.id;
+	console.log(id)
+	
+	var selectACategory = 'SELECT * FROM categories WHERE categories_id = ?'
+	
+	var categories = {
+		name: req.body.name,
+		description: req.body.description,
+		categories_id: id //req.session.user.id //this needs changing to req.session.user.id
+	};
+
+	var query = connection.query(selectACategory, categories.categories_id, function (error, result) {
+	if(error) {
+		console.error(error);
+		return;
+	}
+	res.json(result)
+	console.log(result);
+	});
+});
+
 router.post('/categories', function (req, res) {
 	console.log('CATEGORIES page recieved a POST request');
 

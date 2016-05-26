@@ -13,12 +13,19 @@
 				<tbody>
 				
 					<tr>
+						<td></td>
 						<td><input class="form-control" ng-model="categories.name" name="name"></td>
 						<td><input class="form-control" ng-model="categories.description" name="description"></td>
 						<td><button class="btn btn-primary" ng-click="add()"> Add </button></td>						
-					</tr>
+					</tr>					
 					<tr ng-repeat="categories in categorieslist"> 
-						<!-- <td> <a href='/dashboard.html'> {{categories.name}} </a> </td> -->
+						<!-- link to a specific category </td> -->
+						<td>
+							<a href="#category/{{categories.categories_id}}" class="btn btn-default navbar-btn" ng-click="specific(categories)">
+								{{categories.categories_id}}
+							</a>
+						</td> 
+						
 						<td> <input class="form-control" ng-model="categories.name" name="name" {{categories.name}} > </a> </td>  
 						<td> <input class="form-control" ng-model="categories.description" name="description" {{categories.description}} ></td>
 						<td><button class="btn btn-danger" ng-click="remove(categories.categories_id)">Delete</button></td>

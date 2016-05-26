@@ -1,0 +1,26 @@
+<div>
+	<h1>{{message}}</h1>
+	<table class="table">
+		<thead>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+
+				<tr ng-repeat="category in categoryDetails">
+				
+						<td> <input class="form-control" ng-model="category.categories_id" name="categories_id" {{category.categories_id}} > </td>
+						<td> <input class="form-control" ng-model="category.name" name="name" {{category.name}} > </td>  
+						<td> <input class="form-control" ng-model="category.description" name="description" {{category.description}} ></td>
+						<td><button class="btn btn-danger" ng-click="remove(category.categories_id)">Delete</button></td>
+						<td><button class="btn btn-info" ng-click="update(category)">Update</button></td>
+					</tr>
+				</tbody>
+			</table>
+	
+</div>
