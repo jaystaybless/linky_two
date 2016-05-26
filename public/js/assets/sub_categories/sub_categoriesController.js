@@ -22,7 +22,17 @@ app.controller('sub_categoryController', function($scope, $http, $routeParams){
 
 		$http.post('/sub_categories/' + sub_categories_id + '/links', $scope.links).success(function (response) {
 			console.log(response)
-			linksList = response;
+			$scope.linksList = response;
+			refresh()
+		})
+	}
+	
+	$scope.getLinks = function () {
+		console.log(sub_categories_id)
+		
+		$http.get('/sub_categories/' + sub_categories_id + '/links').success(function (response) {
+			console.log(response)
+			$scope.linksList = response;
 			refresh()
 		})
 	}
