@@ -1,4 +1,5 @@
 <div>
+<!-- CHANGE THE NAME OF THIS PAGE TO CATEGORYDETAILS. THIS WILL ALSO NEED CHANGING IN CLIENT.JS -->	
 	<h1>{{message}}</h1>
 	<table class="table">
 		<thead>
@@ -10,7 +11,7 @@
 						<th></th>
 						<th></th>
 					</tr>
-				</thead>
+		</thead>
 				<tbody>
 				
 				<div>{{categoryDetails}}</div>
@@ -25,7 +26,7 @@
 						<td><button class="btn btn-warning" ng-click="getSubCategories(subCategory)">View All Sub Caegories</button></td>
 						
 						<td>
-							<a href="#category/{{category.categories_id}}/sub_categories" class="btn btn-success navbar-btn">
+							<a href="#sub_categories/{{category.categories_id}}" class="btn btn-success navbar-btn">
 								{{category.categories_id}} Sub Categories
 							</a>
 						</td>
@@ -36,7 +37,7 @@
 			
 			<!-- add subcategories to this category -->	
 			<table class="table">
-			<h3><strong>Sub Categories</strong><h3>
+			<h3><strong>Add Sub Categories to the Category Above</strong><h3>
 				<thead>
 					<tr>
 						<th>Category ID</th>
@@ -61,6 +62,12 @@
 						<td> <input class="form-control" ng-model="subCategory.sub_categories_id" name="categories_id" {{subCategory.sub_categories_id}} > </td>
 						<td><button class="btn btn-danger" ng-click="remove(subCategory.categories_id)">Delete</button></td>
 						<td><button class="btn btn-info" ng-click="update(subCategory)">Update</button></td>
+						<td>
+							<a href="#sub_categories/{{subCategory.sub_categories_id}}" class="btn btn-success navbar-btn">
+								Go to Sub Categories {{subCategory.sub_categories_id}}
+							</a>
+						</td>
+					
 					</tr>	
 				</tbody>
 			</table>
@@ -68,7 +75,7 @@
 			<!-- add links to this category -->	
 			
 			<table class="table">
-			<h4><strong> Add Link</strong><h4>
+			<h4><strong>Add Links to the Category above</strong><h4>
 				<thead>
 					<tr>
 						<th>Name</th>

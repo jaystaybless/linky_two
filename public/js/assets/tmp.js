@@ -45,3 +45,27 @@ app.controller('categoryController', function($scope, $http, $routeParams){
 			templateUrl: 'js/assets/sub_categories/sub_categories.html', 
 			controller: 'sub_categoryController'})
 */
+
+
+
+	$scope.getSubCategories = function () {
+		//console.log('test')
+		//console.log(categories_id)
+		$http.get('/sub_categories/'  + categories_id).success(function(response) {
+			$scope.subCategoryList = response;
+			$scope.subCategory = "";
+			refresh()
+		})
+	}
+	
+	
+	
+	
+		$scope.addLink = function () {
+		console.log(sub_categories_id)
+		console.log($scope.subCategory)
+		console.log($scope.subCategory)
+		$http.post('/sub_categories/' + sub_categories_id + '/links', $scope.subCategory).success(function (response) {
+			console.log(response)
+		})
+	}

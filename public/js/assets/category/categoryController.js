@@ -27,7 +27,7 @@ refresh()
 	$scope.getSubCategories = function () {
 		//console.log('test')
 		//console.log(categories_id)
-		$http.get('/sub_categories/'  + categories_id).success(function(response) {
+		$http.get('/categories/' + categories_id + '/sub_categories').success(function(response) {
 			$scope.subCategoryList = response;
 			$scope.subCategory = "";
 			refresh()

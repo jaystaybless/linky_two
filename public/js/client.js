@@ -7,12 +7,27 @@ app.config(function($routeProvider, $locationProvider){
         .when('/categories',{
 			templateUrl: 'js/assets/categories/categories.html',
 			controller: 'categoriesController'})
-		.when('/category/:categories_id',{
+		.when('/categories/:categories_id',{
 			templateUrl: 'js/assets/category/category.html',
 			controller: 'categoryController'})
-		.when('/category/:categories_id/sub_categories', {
+		.when('/categories/:categories_id/sub_categories', {
+			templateUrl: 'js/assets/sub_categories/sub_categories.html', 
+			controller: 'sub_categoryController'})
+		/*	
+		.when('/sub_categories/:categories_id', {
+			templateUrl: 'js/assets/sub_categories/sub_categories.html', 
+			controller: 'sub_categoryController'})
+		*/	
+		.when('/sub_categories', {
+			templateUrl: 'js/assets/sub_categories/sub_categories.html', 
+			controller: 'sub_categoryController'})				
+		.when('/sub_categories/:sub_categories_id', {
 			templateUrl: 'js/assets/sub_categories/sub_categories.html', 
 			controller: 'sub_categoryController'})	
+		.when('/sub_categories/:sub_categories_id/links', {
+			templateUrl: 'js/assets/sub_categories/sub_categories.html', 
+			controller: 'sub_categoryController'})			
+			
 		.when('/links', {
 			templateUrl: 'js/assets/links/links.html', 
 			controller: 'linksController'})
