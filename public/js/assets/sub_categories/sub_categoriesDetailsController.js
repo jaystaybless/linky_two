@@ -37,17 +37,21 @@ app.controller('sub_categoriesDetailsController', function($scope, $http, $route
 		})
 	}
 	
-	$scope.getLinks = function (subCategory) {
+	var refreshlinksList = function () {
 		console.log('get links for subfolder')
-		console.log(subCategory)
-		console.log(subCategory.sub_categories_id)
+		//console.log(subCategory)
+		console.log(sub_categories_id)
 		
-		$http.get('/sub_categories/' + subCategory.sub_categories_id + '/links').success(function (response) {
+		$http.get('/sub_categories/' + sub_categories_id + '/links').success(function (response) {
 			console.log(response)
 			$scope.linksList = response;
-			refresh()
+			$scope.links = "";
+			
 		})
+		
 	}
+
+refreshlinksList()
 	
 	$scope.addLink = function () {
 		console.log(sub_categories_id)
@@ -56,7 +60,7 @@ app.controller('sub_categoriesDetailsController', function($scope, $http, $route
 		$http.post('/sub_categories/' + sub_categories_id + '/links', $scope.links).success(function (response) {
 			console.log(response)
 			$scope.linksList = response;
-			refresh()
+			refreshlinksList();
 		})
 	}
 	
@@ -65,15 +69,29 @@ app.controller('sub_categoriesDetailsController', function($scope, $http, $route
 		console.log('clicked')
 		$scope.hideInfo = true
 		console.log($scope.hideInfo)
-
 	}
+	
+	$scope.updateLink = function (links) {
+		console.log(links)
+		console.log(links.links_id)
+		
+		$http.put('/links/' + links.links_id, links).success(function (response) {
+			console.log(response);
+			$scope.hideInfo = false
+			refreshlinksList();
+		})
+	}
+	
+	
 	
 	$scope.removeLink = function (links) {
 		console.log(links)
 		console.log(links.links_id)
 		console.log(links.sub_categories_id)
-		$http.delete('/sub_categories/' + links.sub_categories_id + '/links/' links.links_id).success(function (response) {
+		$http.delete('/links/' + links.links_id).success(function (response) {
 			console.log(response)
+			$scope.hideInfo = false
+			refreshlinksList();
 		})
 	}
 	/*

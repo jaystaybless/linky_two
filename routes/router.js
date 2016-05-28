@@ -277,10 +277,55 @@ router.post('/sub_categories/:id/links', function (req, res) {
 	})
 })
 
-router.delete('/sub_categories/:id', function(req, res) {
-	console.log('CATEGORIES / SUB CATEGORIES page recieved a DELETE request');
+//LINKS route
+
+router.put('/links/:id', function(req, res) {
+	console.log('LINKS page recieved a PUT request');
 	var id = req.params.id;
-	var sub_categories_id = id
+	console.log(id)
+	var links_id = id
+	console.log(links_id)
+	
+	var links = {
+		name: req.body.name,
+		description: req.body.description,
+		url: req.body.url,
+		user_id: req.body.user_id,
+		categories_id: req.body.categories_id, //req.session.user.id //this needs changing to req.session.user.id
+		sub_categories_id: req.body.sub_categories_id,
+		links_id: req.body.links_id
+	};
+	
+	var updateLink = 'UPDATE links SET name = ?, description = ?, url = ?, user_id = ?, categories_id = ?, sub_categories_id = ? WHERE links_id = ?';
+	console.log(links)
+	var query = connection.query(updateLink, [links.name, links.description, links.url, links.user_id, links.categories_id, links.sub_categories_id, links.links_id], function (error, result) {
+		if(error) {
+		console.error(error);
+		return;
+		}
+		res.json(result)
+		console.log(result);
+	});	
+
+});
+	
+
+router.delete('/links/:id', function(req, res) {
+	console.log('LINKS page recieved a DELETE request');
+	var id = req.params.id;
+	console.log(id)
+	var links_id = id
+	console.log(links_id)
+	var deleteLink = 'DELETE FROM links WHERE links_id = ?'
+		
+	var query = connection.query(deleteLink, links_id, function (error, result) {
+		if(error) {
+			console.error(error);
+			return;
+		}
+		res.json(result)
+		console.log(result);
+	});
 
 
 });
