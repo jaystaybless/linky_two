@@ -22,8 +22,8 @@ app.config(function($routeProvider, $locationProvider){
 			templateUrl: 'js/assets/sub_categories/sub_categories.html', 
 			controller: 'sub_categoryController'})				
 		.when('/sub_categories/:sub_categories_id', {
-			templateUrl: 'js/assets/sub_categories/sub_categories.html', 
-			controller: 'sub_categoryController'})	
+			templateUrl: 'js/assets/sub_categories/sub_categoriesDetails.html', 
+			controller: 'sub_categoriesDetailsController'})	
 		.when('/sub_categories/:sub_categories_id/links', {
 			templateUrl: 'js/assets/sub_categories/sub_categories.html', 
 			controller: 'sub_categoryController'})			

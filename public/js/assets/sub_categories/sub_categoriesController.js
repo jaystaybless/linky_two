@@ -1,14 +1,13 @@
 app.controller('sub_categoryController', function($scope, $http, $routeParams){
     console.log("sub_categoryController is now in action")
 	
-	var sub_categories_id = $routeParams.sub_categories_id
-	//console.log($routeParams)
+	console.log($routeParams)	
 	
 	var refresh = function () {
 		//console.log('test')
 		//console.log(sub_categories_id)
-		$http.get('/sub_categories/'  + sub_categories_id).success(function(response) {
-			//console.log(response)
+		$http.get('/sub_categories').success(function(response) {
+			console.log(response)
 			$scope.subCategoryList = response;
 			$scope.subCategory = "";
 		})
@@ -16,21 +15,33 @@ app.controller('sub_categoryController', function($scope, $http, $routeParams){
 	refresh()
 	//need to start working on this route/controller
 	
-	$scope.addLink = function () {
+	$scope.remove = function(sub_categories_id) {
 		console.log(sub_categories_id)
-		console.log($scope.links)
-
-		$http.post('/sub_categories/' + sub_categories_id + '/links', $scope.links).success(function (response) {
+		$http.delete('/sub_categories/' + sub_categories_id).success(function(response) {
 			console.log(response)
-			$scope.linksList = response;
-			refresh()
+			//$scope.subCategoryList = response;
+			refresh();
 		})
+	
 	}
 	
-	$scope.getLinks = function () {
-		console.log(sub_categories_id)
+	
+	$scope.addLink = function (subCategory) {
+
+		var element = angular.element('.sub_categories_id').find('subCategory.sub_categories_id');
+		console.log(element)
+		 
+
+		console.log($scope.links)
+		refresh()
+	}
+	
+	$scope.getLinks = function (subCategory) {
+		console.log('get links for subfolder')
+		console.log(subCategory)
+		console.log(subCategory.sub_categories_id)
 		
-		$http.get('/sub_categories/' + sub_categories_id + '/links').success(function (response) {
+		$http.get('/sub_categories/' + subCategory.sub_categories_id + '/links').success(function (response) {
 			console.log(response)
 			$scope.linksList = response;
 			refresh()

@@ -34,6 +34,16 @@ refresh()
 		})
 	}
 	
+	$scope.remove = function(sub_categories_id) {
+		console.log(sub_categories_id)
+		$http.delete('/sub_categories/' + sub_categories_id).success(function(response) {
+			console.log(response)
+			//$scope.subCategoryList = response;
+			refresh();
+		})
+	
+	}
+	
 
       $scope.message = "Welcome to the Category Page";  
 });

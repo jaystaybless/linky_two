@@ -28,7 +28,8 @@ styling for fixed navigation bar
 li {
 	float: left;
 	margin: 5px;
-	padding-right: 40px	
+	padding-right: 40px;	
+	list-style-type: none;
 }
 
 ul {

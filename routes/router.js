@@ -175,6 +175,22 @@ router.get('/sub_categories/:categories_id', function(req, res) {
 })
 */
 
+router.get('/sub_categories', function(req, res) {
+	console.log('SUB CATEGORIES page recieved a GET');
+	//var id = req.params.id;	
+	//var sub_categories_id = id;
+	//console.log(sub_categories_id)
+	
+	var selectSubCategory = 'SELECT * FROM sub_categories WHERE user_id = ?';
+	var user_id = '1'
+	console.log(user_id)
+	
+	connection.query(selectSubCategory, user_id, function(error, result) {
+			res.json(result)
+			console.log(result)
+	})	
+})
+
 router.get('/sub_categories/:id', function(req, res) {
 	console.log('SUB CATEGORIES page recieved a GET request with sub_categories_id');
 	var id = req.params.id;	
@@ -187,6 +203,31 @@ router.get('/sub_categories/:id', function(req, res) {
 			res.json(result)
 			console.log(result)
 	})	
+})
+
+router.put('/sub_categories/:id', function (req, res) {
+	console.log('SUB CATEGORy / LINKS page recieved a PUT request');
+	var id = req.params.id;
+	var sub_categories_id = id;
+	console.log(id)
+	console.log(sub_categories_id)
+	
+	var subCategory = {
+		name: req.body.name,
+		description: req.body.description,
+		categories_id: req.body.categories_id,//req.session.user.id //this needs changing to req.session.user.id
+		sub_categories_id: req.body.sub_categories_id
+	};
+	
+	var upateSubCategory = 'UPDATE sub_categories SET name = ?, description = ?, categories_id = ? WHERE sub_categories_id = ?';
+	var query = connection.query(upateSubCategory, [subCategory.name, subCategory.description, subCategory.categories_id, subCategory.sub_categories_id], function (error, result) {
+	if(error) {
+		console.error(error);
+		return;
+	}
+	res.json(result)
+	console.log(result);
+	});
 })
 
 router.get('/sub_categories/:id/links', function (req, res) {
@@ -235,6 +276,14 @@ router.post('/sub_categories/:id/links', function (req, res) {
 		})
 	})
 })
+
+router.delete('/sub_categories/:id', function(req, res) {
+	console.log('CATEGORIES / SUB CATEGORIES page recieved a DELETE request');
+	var id = req.params.id;
+	var sub_categories_id = id
+
+
+});
 
 
 

@@ -60,7 +60,7 @@
 						<td> <input class="form-control" ng-model="subCategory.name" name="name" {{subCategory.name}} > </td>  
 						<td> <input class="form-control" ng-model="subCategory.description" name="description" {{subCategory.description}} ></td>
 						<td> <input class="form-control" ng-model="subCategory.sub_categories_id" name="categories_id" {{subCategory.sub_categories_id}} > </td>
-						<td><button class="btn btn-danger" ng-click="remove(subCategory.categories_id)">Delete</button></td>
+						<td><button class="btn btn-danger" ng-click="remove(subCategory.sub_categories_id)">Delete</button></td>
 						<td><button class="btn btn-info" ng-click="update(subCategory)">Update</button></td>
 						<td>
 							<a href="#sub_categories/{{subCategory.sub_categories_id}}" class="btn btn-success navbar-btn">
@@ -71,6 +71,8 @@
 					</tr>	
 				</tbody>
 			</table>
+			
+			
 			
 			<!-- add links to this category -->	
 			
@@ -95,5 +97,7 @@
 					
 				</tbody>
 			</table>
+			
+
 	
 </div>
