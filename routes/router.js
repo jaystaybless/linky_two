@@ -205,8 +205,33 @@ router.get('/sub_categories/:id', function(req, res) {
 	})	
 })
 
+router.delete('/sub_categories/:id', function(req, res) {
+	console.log('SUB CATEGORY page recieved a DELETE request for SUB CATEGORY and RELATIONSHIPS');
+	var id = req.params.id;	
+	var sub_categories_id = id;
+	console.log(sub_categories_id)
+	
+	var deleteSubCategoryLinks = 'DELETE FROM links WHERE sub_categories_id = ?'
+	var deleteSubCategory = 'DELETE FROM sub_categories WHERE sub_categories_id = ?'
+		
+	var  query = connection.query(deleteSubCategoryLinks, sub_categories_id, function(error, result) {
+		if(error) {
+			console.error(error);
+			return;
+		}	
+		connection.query(deleteSubCategory, sub_categories_id, function (error, result) {
+			if(error) {
+				console.error(error);
+				return;
+			}
+			res.json(result)
+			console.log(result);
+		});
+	});
+});
+
 router.put('/sub_categories/:id', function (req, res) {
-	console.log('SUB CATEGORy / LINKS page recieved a PUT request');
+	console.log('SUB CATEGORY / LINKS page recieved a PUT request');
 	var id = req.params.id;
 	var sub_categories_id = id;
 	console.log(id)
@@ -326,8 +351,6 @@ router.delete('/links/:id', function(req, res) {
 		res.json(result)
 		console.log(result);
 	});
-
-
 });
 
 

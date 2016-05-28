@@ -19,13 +19,29 @@ app.controller('sub_categoriesDetailsController', function($scope, $http, $route
 	$scope.remove = function(subCategory) {
 		console.log(subCategory)
 		console.log(subCategory.sub_categories_id)
+		console.log(subCategory.name)
 
-		alert('are you sure')
+		var check = confirm('Deleting sub category ' + subCategory.name + ' will also delete all of its belongings. Are you sure you want to continue?')
+		console.log(check)
+		if(check == false) {
+			console.log('canceled')
+			return;
+		}
+		console.log('going to delete')	
 		$http.delete('/sub_categories/' + subCategory.sub_categories_id).success(function(response) {
 			console.log(response)
 			//$scope.subCategoryList = response;
+			var sub_categories_id = "";
 			refresh();
+			refreshlinksList();
 		})
+	}
+	
+	$scope.edit = function (links) {
+		console.log(links)
+		console.log('clicked')
+		$scope.hideInfo = true;
+		console.log($scope.hideInfo)
 	}
 	
 	$scope.update = function(subCategory) {
@@ -33,6 +49,7 @@ app.controller('sub_categoriesDetailsController', function($scope, $http, $route
 		console.log(subCategory)
 		$http.put('/sub_categories/' + subCategory.sub_categories_id, subCategory).success(function(response) {
 			console.log('put')
+			$scope.hideInfo = false;
 			refresh();
 		})
 	}
