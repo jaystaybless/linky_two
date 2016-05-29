@@ -19,9 +19,15 @@ refresh();
 		})
 	} 
 	
+	$scope.edit = function () {
+		$scope.hideInfo = true;
+		console.log($scope.hideInfo)
+	}
+	
 	$scope.remove = function(categories_id) {
 		console.log(categories_id)
 		$http.delete('/categories/' + categories_id).success(function(response) {
+			$scope.hideInfo = false;
 			refresh();
 		})
 		
@@ -32,7 +38,8 @@ refresh();
 		console.log('client put ')
 		console.log(categories)
 		$http.put('/categories/' + categories.categories_id, categories).success(function(response) {
-			console.log('put')
+			console.log('put');
+			$scope.hideInfo = false;
 			refresh();
 		})
 	}
