@@ -116,24 +116,24 @@ router.post('/categories/:id/sub_categories/', function (req, res) {
 router.delete('/categories/:id', function(req, res) {
 	console.log('CATEGORIES page recieved a DELETE request');
 	var id = req.params.id;
-	console.log(id)
+	console.log(id);
+	var categories_id = id;
+	console.log(categories_id);
 	
+	var deleteSubCategoryLinks = 'DELETE FROM links WHERE categories_id = ?'
+	var deleteSubCategory = 'DELETE FROM sub_categories WHERE categories_id = ?'
 	var deleteCategory = 'DELETE FROM categories WHERE categories_id = ?'
 	
-	var categories = {
-		name: req.body.name,
-		description: req.body.description,
-		categories_id: id //req.session.user.id //this needs changing to req.session.user.id
-	};
-
-	var query = connection.query(deleteCategory, categories.categories_id, function (error, result) {
-	if(error) {
-		console.error(error);
-		return;
-	}
-	res.json(result)
-	console.log(result);
-	});
+	var query = connection.query(deleteCategory, categories_id, function(error, result) {
+		if(error) {
+			var errorMessage = 'cant delete because of relationship';
+			console.error(error);
+			res.json(errorMessage)
+			return;
+		}	
+		res.json(result)
+		console.log(result)
+	})	
 });
 
 
@@ -200,8 +200,12 @@ router.get('/sub_categories/:id', function(req, res) {
 	var selectSubCategory = 'SELECT * FROM sub_categories WHERE sub_categories_id = ?';
 	
 	connection.query(selectSubCategory, sub_categories_id, function(error, result) {
-			res.json(result)
-			console.log(result)
+		if(error) {
+			console.error(error);
+			return;
+		}		
+		res.json(result)
+		console.log(result)
 	})	
 })
 
@@ -285,7 +289,7 @@ router.post('/sub_categories/:id/links', function (req, res) {
 		description: req.body.description,
 		url: req.body.url,
 		user_id: "1",//req.session.user.id //this needs changing to req.session.user.id
-		categories_id: "1",
+		categories_id: req.body.categories_id,
 		sub_categories_id: id
 	};
 	console.log(links)
@@ -303,6 +307,51 @@ router.post('/sub_categories/:id/links', function (req, res) {
 })
 
 //LINKS route
+
+router.get('/categories/:id/links', function(req, res) {
+	console.log('CATEGORIES / LINKS page recieved a GET request');
+	var id = req.params.id;
+	console.log(id);
+	var categories_id = id;
+	console.log(categories_id);
+	
+	var selectAllLinksForCategory = 'SELECT * FROM links WHERE categories_id = ?';
+	
+	connection.query(selectAllLinksForCategory, categories_id, function(error, result) {
+			res.json(result)
+			console.log(result)
+	});
+});
+
+router.post('/categories/:id/links', function(req, res) {
+	console.log('CATEGORIES / LINKS page recieved a POST request');
+	var id = req.params.id;
+	//console.log(id);
+	var categories_id = id;
+	//console.log(categories_id);
+	
+	var createCategoryLinks = 'INSERT INTO links SET ?';
+	var selectAllLinksForCategory = 'SELECT * FROM links WHERE categories_id = ?';
+	
+	var links = {
+		name: req.body.name,
+		description: req.body.description,
+		url: req.body.url,
+		user_id: '1',
+		categories_id: categories_id //req.session.user.id //this needs changing to req.session.user.id
+	};
+
+	connection.query(createCategoryLinks, links, function(error, result) {
+		if(error) {
+			console.error(error);
+			return;
+		}
+		connection.query(selectAllLinksForCategory, links.categories_id, function(error, result) {
+			res.json(result)
+			console.log(result)
+		});
+	});
+});
 
 router.put('/links/:id', function(req, res) {
 	console.log('LINKS page recieved a PUT request');

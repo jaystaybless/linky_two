@@ -4,12 +4,18 @@ app.controller('sub_categoriesDetailsController', function($scope, $http, $route
 	var sub_categories_id = $routeParams.sub_categories_id
 	console.log($routeParams)
 	
+	/*
+	var testing = ''
+	testing += response[0].categories_id
+	console.log(response[0].categories_id)
+	console.log(testing)
+	*/
+	
 	var refresh = function () {
 		//console.log('test')
 		//console.log(sub_categories_id)
 		$http.get('/sub_categories/'  + sub_categories_id).success(function(response) {
-			//console.log(response)
-			$scope.subCategoryList = response;
+			$scope.subCategoryList = response;	
 			$scope.subCategory = "";
 		})
 	}
@@ -20,6 +26,7 @@ app.controller('sub_categoriesDetailsController', function($scope, $http, $route
 		console.log(subCategory)
 		console.log(subCategory.sub_categories_id)
 		console.log(subCategory.name)
+		console.log(subCategory.categories_id)
 
 		var check = confirm('Deleting sub category ' + subCategory.name + ' will also delete all of its belongings. Are you sure you want to continue?')
 		console.log(check)
@@ -67,6 +74,8 @@ app.controller('sub_categoriesDetailsController', function($scope, $http, $route
 	}
 
 refreshLinksList()
+
+//this route can be changed to post directly to the link resource 
 	
 	$scope.addLink = function () {
 		console.log(sub_categories_id)

@@ -1,71 +1,32 @@
-app.controller('categoryController', function($scope, $http, $routeParams){
-    console.log("categoryController is in action")
-	var categories_id = $routeParams.categories_id
+router.delete('/categories/:id', function(req, res) {
+	console.log('CATEGORIES page recieved a DELETE request');
+	var id = req.params.id;
+	console.log(id);
+	var categories_id = id;
+	console.log(categories_id);
 	
-	$http.get('/categories/' + categories_id).success(function(response) {
-		console.log('specific now complete on client');
-		$scope.categoryDetails = response
-	})
-	//delete route needs looking into (refresh function needs to be thought about)
-	$scope.remove = function(categories_id) {
-		console.log(categories_id)
-		$http.delete('/categories/' + categories_id).success(function(response) {
-			//refresh();
-		})
-		
-	}
-	
-	$scope.update = function(categories) {
+	var deleteSubCategoryLinks = 'DELETE FROM links WHERE categories_id = ?'
+	var deleteSubCategory = 'DELETE FROM sub_categories WHERE categories_id = ?'
+	var deleteCategory = 'DELETE FROM categories WHERE categories_id = ?'
 
-		console.log('client put ')
-		console.log(categories)
-		$http.put('/categories/' + categories_id, categories).success(function(response) {
-			console.log('put')
-			//refresh();
+	var query = connection.query(deleteSubCategoryLinks, categories_id, function (error, result) {
+		if(error) {
+			console.error(error);
+			return;
+		}
+		connection.query(deleteSubCategory, categories_id, function(error, result) {
+			if(error) {
+				console.error(error);
+				return;
+			}		
+			connection.query(deleteCategory, categories_id, function(error, result) {
+				if(error) {
+					console.error(error);
+					return;
+				}	
+				res.json(result)
+				console.log(result)
+			})
 		})
-	}
-
-      $scope.message = "Welcome to the Category Page";  
+	})	
 });
-
-
-
-	$scope.specific = function(categories) {
-		console.log(categories.categories_id);
-		$http.get('/categories/' + categories.categories_id).success(function(response) {
-			console.log('specific from Categories controller');
-			console.log(response)
-			$scope.categories = response;
-			//$scope.categories = "";
-		});
-	}
-	
-	/*			
-        .when('/sub_categories', {
-			templateUrl: 'js/assets/sub_categories/sub_categories.html', 
-			controller: 'sub_categoryController'})
-*/
-
-
-
-	$scope.getSubCategories = function () {
-		//console.log('test')
-		//console.log(categories_id)
-		$http.get('/sub_categories/'  + categories_id).success(function(response) {
-			$scope.subCategoryList = response;
-			$scope.subCategory = "";
-			refresh()
-		})
-	}
-	
-	
-	
-	
-		$scope.addLink = function () {
-		console.log(sub_categories_id)
-		console.log($scope.subCategory)
-		console.log($scope.subCategory)
-		$http.post('/sub_categories/' + sub_categories_id + '/links', $scope.subCategory).success(function (response) {
-			console.log(response)
-		})
-	}
