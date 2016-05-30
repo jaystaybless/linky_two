@@ -41,7 +41,7 @@
 						<td ng-show="hideInfo">{{subCategory.sub_categories_id}} </td>
 						<td ng-show="hideInfo"><button class="btn btn-danger" ng-click="remove(subCategory)">Delete</button></td>
 						<td ng-show="hideInfo"><button class="btn btn-info" ng-click="update(subCategory)">Update</button></td>
-						<td><button class="btn btn-warning" ng-click="edit(subCategory)"> Edit </button></td>  
+						<td><button class="btn btn-warning" ng-model="hideInfo" ng-click="edit(subCategory)"> Edit </button></td>  
 						<!-- <td><button class="btn btn-warning" ng-click="getLinks(subCategory)">Show all Links</button></td> -->		
 					
 					
