@@ -2,7 +2,7 @@
 	<h1>{{message}}</h1>
 	
 	<table class="table">
-			<h4><strong>Main Links</strong><h4>
+			<h4><strong>Links Details</strong><h4>
 				<!-- hide elements -->
 				<thead ng-hide="hideInfo">
 					<tr>
@@ -26,7 +26,19 @@
 						<th>Sub Category ID</th>
 					</tr>
 				</thead>
-				<tbody>				
+				<tbody>
+					<tr> <!-- ng-repeat="links in linksList" -->
+						<td><p><strong> Add links</strong></p></td>
+						<td><input class="form-control" ng-model="links.name" name="name" placeholder="Write a name for your links"></td>
+						<td><input class="form-control" ng-model="links.description" name="description" placeholder="Write a name for description links"></td>
+						<td><input class="form-control" ng-model="links.url" name="url" placeholder="Write a URL"></td>
+						<td></td>
+						<td></td>
+						<td ng-show="hideInfo"></td>
+						<td><button class="btn btn-primary" ng-click="addLink(subCategory)"> Add Link</button></td>						
+					
+					</tr>
+				
 					<tr ng-repeat="links in linksList" >
 			
 						<!-- hide elements -->
@@ -50,8 +62,7 @@
 						<td ng-show="hideInfo"><button class="btn btn-danger" ng-click="removeLink(links)">Delete</button></td>
 						<td ng-show="hideInfo"><button class="btn btn-info" ng-click="updateLink(links)">Update</button></td>
 						
-						<!-- <td ng-show="hideInfo"><button class="btn btn-warning" ng-model="hideInfo" ng-click="edit(hideInfo)">Edit Link</button></td> -->
-						<td ng-hide="hideInfo"><button class="btn btn-warning" ng-model="hideInfo" ng-click="edit(hideInfo)">Edit Link</button></td>
+						<!-- <td><button class="btn btn-warning" ng-model="hideInfo" ng-click="editLink(hideInfo)">Edit Link</button></td> -->
 					
 					</tr>	
 				

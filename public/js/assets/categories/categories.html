@@ -32,7 +32,8 @@
 						<td><input class="form-control" ng-model="categories.name" name="name" placeholder="Write a name"></td>
 						<td><input class="form-control" ng-model="categories.description" name="description" placeholder="Write a description"></td>
 						<td ng-show="hideInfo"></td>
-						<td><button class="btn btn-primary" ng-click="add()"> Add </button></td>						
+						<td><button class="btn btn-primary" ng-click="add()"> Add </button></td>
+						<td ng-hide="hideInfo"><button class="btn btn-warning" ng-model="hideInfo" ng-click="edit(hideInfo)">Edit Category</button></td>						
 					</tr>					
 					<tr ng-repeat="categories in categorieslist"> 
 						
@@ -62,7 +63,7 @@
 						<td ng-show="hideInfo"></td>
 						<td ng-show="hideInfo"><button class="btn btn-danger" ng-click="remove(categories.categories_id)">Delete</button></td>
 						<td ng-show="hideInfo"><button class="btn btn-info" ng-click="update(categories)">Update</button></td>
-						<td><button class="btn btn-warning" ng-model="hideInfo" ng-click="edit(hideInfo)">Edit Category</button></td>
+						<!-- <td ng-hide="hideInfo"><button class="btn btn-warning" ng-model="hideInfo" ng-click="edit(hideInfo)">Edit Category</button></td> -->
 					</tr>
 				</tbody>
 			</table>

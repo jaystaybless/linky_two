@@ -1,21 +1,21 @@
-app.controller('linksController', function($scope, $http, $routeParams){
-    console.log("linksController is in action")
+app.controller('aLinkController', function($scope, $http, $routeParams){
+    console.log("aLinkController is in action")
 	
 	var links_id = $routeParams.links_id;
 	console.log(links_id);
 	
 	var refresh = function () {
-		console.log(links_id);
-		$http.get('/links').success(function (response) {
+		console.log(links_id)
+		$http.get('/links/' + links_id).success(function (response) {
 			console.log(response)
 			$scope.linksList = response;	
 			//$scope.linkLists = "";
 			//$scope.hideInfo = false;
 			console.log($scope.hideInfo)
+			;
 		});	
 	};
-	
-refresh();
+refresh()
 	
 	$scope.edit = function () {
 		$scope.hideInfo = true;
@@ -45,9 +45,5 @@ refresh();
 		});
 	};
 	
-	
-	
-	
-
-    $scope.message = "Welcome to the Links Page";  
+    $scope.message = "Welcome to the Link Details Page";  
 });

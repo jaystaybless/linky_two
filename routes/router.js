@@ -353,6 +353,46 @@ router.post('/categories/:id/links', function(req, res) {
 	});
 });
 
+router.get('/links', function(req, res) {
+	console.log('LINKS page recieved a GET request');
+	
+	var user_id = '1'; 
+	
+	var selectAllLinks = 'SELECT * FROM links WHERE user_id = ?';
+	
+	connection.query(selectAllLinks, user_id, function(error, result) {
+		if(error) {
+			console.error(error);
+			return;
+		}
+		res.json(result)
+		console.log(result)
+	})
+});
+
+
+router.get('/links/:id', function(req, res) {
+	console.log('LINKS page recieved a specific GET request');
+	var id = req.params.id;
+	console.log(id)
+	var links_id = id
+	console.log(links_id)
+	
+	var selectALinks = 'SELECT * FROM links WHERE links_id = ?';
+	
+	connection.query(selectALinks, links_id, function(error, result) {
+		if(error) {
+			console.error(error);
+			return;
+		}
+		res.json(result)
+		console.log(result)
+	})
+
+	
+});
+
+
 router.put('/links/:id', function(req, res) {
 	console.log('LINKS page recieved a PUT request');
 	var id = req.params.id;

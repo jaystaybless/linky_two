@@ -27,14 +27,13 @@ app.config(function($routeProvider, $locationProvider){
 		.when('/sub_categories/:sub_categories_id/links', {
 			templateUrl: 'js/assets/sub_categories/sub_categories.html', 
 			controller: 'sub_categoryController'})	
-			
-		.when('/links/:id', {
-			templateUrl: 'js/assets/links/links.html', 
-			controller: 'linksController'})			
-			
+		
 		.when('/links', {
 			templateUrl: 'js/assets/links/links.html', 
 			controller: 'linksController'})
+		.when('/links/:links_id', {
+			templateUrl: 'js/assets/links/links.html', 
+			controller: 'aLinkController'})			
 		.when('/register', {
 			templateUrl: 'js/assets/authentication/register/register.html', 
 			controller: 'registerController'})
