@@ -5,6 +5,45 @@ var router = express.Router();
 var db = require('../database/db').db;
 var connection = require('../database/db').connection;
 
+
+// REGISTER route
+
+router.post('/register', function (req, res) {
+	console.log('SUB CATEGORIES / LINKS page recieved a POST request');
+	
+	var selectUniqueUser = 'SELECT * FROM users WHERE email = ?';
+	var createUser = 'INSERT INTO users SET ?';
+	
+	var user = {
+		email: req.body.email,
+		fullName: req.body.fullName,
+		username: req.body.username,
+		password: req.body.password
+	};
+	console.log(user)
+
+	var query = connection.query(selectUniqueUser, user.email, function (error, result) {		
+		var userCount = 0
+		for(i in result) {
+			userCount++
+			console.log('userCount total = ' + userCount + ' or more')
+			if(userCount = 1) {
+				console.log('user already exists');
+				return res.json('user already exists');
+			}
+		}
+		connection.query(createUser, user, function (error, result) {
+			console.log('user created')
+			console.log(result)
+			res.json(result)
+
+		});
+	});
+});
+
+
+
+
 //CATEGORIES routes
 router.get('/categories', function (req, res) {
 	console.log('CATEGORIES page recieved a GET request');
