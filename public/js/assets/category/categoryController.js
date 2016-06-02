@@ -138,5 +138,5 @@ refreshLinksList()
 		});
 	};
 
-    $scope.message = "Welcome to the Category Page";  
+    $scope.message = "Category";  
 });

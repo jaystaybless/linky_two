@@ -45,5 +45,5 @@ refresh()
 		});
 	};
 	
-    $scope.message = "Welcome to the Link Details Page";  
+    $scope.message = "Link Details";  
 });

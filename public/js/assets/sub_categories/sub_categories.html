@@ -3,40 +3,30 @@
 	
 		<!-- add subcategories to this category -->	
 			
-		<table class="table">
-		<h3><strong>Sub Categories</strong><h3>		
+		<table class="table">	
 		<!-- hide elements -->
 			<thead ng-hide="hideInfo">
 				<tr>
-					<th>Category ID</th>
 					<th>Name</th>
 					<th>Description</th>
-					<th>Sub Category ID</th>
 				</tr>
 			</thead>
 		<!-- show elements -->
 			<thead ng-show="hideInfo">
 				<tr>
-					<th>Category ID</th>
 					<th>Name</th>
 					<th>Description</th>
-					<th>Sub Category ID</th>
 				</tr>
 			</thead>
 			
 			<tbody>
 	
 				<tr ng-repeat="subCategory in subCategoryList">
-					<td ng-hide="hideInfo"> {{subCategory.categories_id}} </td>
 					<td ng-hide="hideInfo"> {{subCategory.name}} </td>  
-					<td ng-hide="hideInfo"> {{subCategory.description}} </td>
-					<td ng-hide="hideInfo">{{subCategory.sub_categories_id}} </td>					
-					<!-- <td><button class="btn btn-warning" ng-click="getLinks(subCategory)">Show all Links</button></td> -->						
+					<td ng-hide="hideInfo"> {{subCategory.description}} </td>										
 					
-					<td ng-show="hideInfo"> {{subCategory.categories_id}} </td>
 					<td ng-show="hideInfo"> <input class="form-control" ng-model="subCategory.name" name="name" {{subCategory.name}} > </td>  
 					<td ng-show="hideInfo"> <input class="form-control" ng-model="subCategory.description" name="description" {{subCategory.description}} ></td>
-					<td ng-show="hideInfo">{{subCategory.sub_categories_id}} </td>
 					<td ng-show="hideInfo"><button class="btn btn-danger" ng-click="remove(subCategory)">Delete</button></td>
 					<td ng-show="hideInfo"><button class="btn btn-info" ng-click="update(subCategory)">Update</button></td>	
 					<!-- <td><button class="btn btn-warning" ng-click="edit(subCategory)"> Edit </button></td>  -->
@@ -60,13 +50,10 @@
 			<!-- show elements -->
 			<thead ng-show="hideInfo">
 				<tr>
-					<th>Category ID</th>
 					<th>Name</th>
 					<th>Description</th>
 					<th>URL</th>
 					<th>Click-able URL</th>
-					<th>Link ID</th>
-					<th>Sub Category ID</th>
 				</tr>
 			</thead>	
 			<tbody>
@@ -74,21 +61,15 @@
 				<tr ng-repeat="links in linksList" >
 				
 					<!-- hide elements -->
-					<td ng-hide="hideInfo"> {{links.categories_id}} </td>
 					<td ng-hide="hideInfo"> {{links.name}} </td>
 					<td ng-hide="hideInfo"> {{links.description}} </td>
 					<td ng-hide="hideInfo"> <a href="{{links.url}}">{{links.url}} </a> </td>
-					<td ng-hide="hideInfo"> {{links.links_id}} </td>
-					<td ng-hide="hideInfo"> {{links.sub_categories_id}} </td>
 								
 					<!-- show elements -->
-					<td ng-show="hideInfo"> {{links.categories_id}}</td>
 					<td ng-show="hideInfo"> <input class="form-control" ng-model="links.name" name="name" {{links.name}} > </td>  
 					<td ng-show="hideInfo"> <input class="form-control" ng-model="links.description" name="description" {{links.description}} ></td>
 					<td ng-show="hideInfo"> <input class="form-control" ng-model="links.url" name="url" {{links.url}} > </td>
 					<td ng-show="hideInfo"> <a href="{{links.url}}" class="btn btn-success link-btn">Click this to go {{links.url}} </a></td>	
-					<td ng-show="hideInfo"> {{links.links_id}} </td> 
-					<td ng-show="hideInfo"> {{links.sub_categories_id}} </td>
 					<td ng-show="hideInfo"><button class="btn btn-info" ng-click="updateLink(links)">Update</button></td>
 								
 					<td>

@@ -3,13 +3,18 @@
 
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px  ‘Courier New’, Courier, monospace;;
 }
 
 a {
   color: #00B7FF;
+
 }
 
+.logo{
+	height: 42px;
+	width: 42px;
+}
 /*
 styling for fixed navigation bar
 */
@@ -38,7 +43,10 @@ ul {
     padding-bottom: 50px
 }
 
-
+.about {
+	padding-left: 50px;
+	padding-right: 50px;
+}
 
 /*
 use the css below to run global tests

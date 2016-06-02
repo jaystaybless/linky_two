@@ -126,5 +126,5 @@ app.controller('sub_categoryController', function($scope, $http, $routeParams){
 	}
 	*/
 	
-      $scope.message = "Welcome to the Sub Categories Page";  
+      $scope.message = "Sub Categories";  
 });

@@ -43,5 +43,5 @@ refresh();
 			refresh();
 		})
 	}
-      $scope.message = "Welcome to the Categories Page";  
+      $scope.message = "Categories";  
 });

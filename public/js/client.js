@@ -37,10 +37,12 @@ app.config(function($routeProvider, $locationProvider){
 		.when('/about', {
 			templateUrl: 'js/assets/about/about.html', 
 			controller: 'aboutController'})
+		.when('/contact', {
+			templateUrl: 'js/assets/contact/contact.html', 
+			controller: 'contactController'})
 		.when('/logout', {
 			redirectTo: '/index'})
-		.otherwise({ redirectTo: '/index' });
-        
+		.otherwise({ redirectTo: '/index' });      
 	$locationProvider.html5Mode({
         enable:true,
         requireBase: false
@@ -50,11 +52,6 @@ app.config(function($routeProvider, $locationProvider){
 app.controller('indexController', function($scope){
     console.log("Index page has loaded")
 	
-	$scope.edit = function () {
-		console.log('clicked')
-		$scope.hideInfo = true;
-		console.log($scope.hideInfo)
-	}
-		$scope.message = "Welcome to the Hardware Store"; 
+		//$scope.message = "Welcome to the Hardware Store"; 
 		$scope.navbar = "js/assets/navbar/navbar.html"; 	  
 });

@@ -129,6 +129,6 @@ refreshLinksList()
 	
 	
 	
-    $scope.message = "Welcome to the Sub Category " + sub_categories_id + " Details Page"; 
+    $scope.message = "Sub Category " + sub_categories_id; 
 	$scope.subMessage = "Sub Category"	  
 });

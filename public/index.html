@@ -28,6 +28,7 @@
 		<script src="js/assets/links/linksController.js"></script> 
 		<script src="js/assets/links/aLinkController.js"></script>
 		<script src="js/assets/about/aboutController.js"></script>
+		<script src="js/assets/contact/contactController.js"></script>
 
 		<!-- authentcation controllers -->
 		<script src="js/assets/authentication/register/registerController.js"></script> 
@@ -42,14 +43,17 @@
 						<div ng-include="navbar"></div>
 						
                         <span ng-cloak>{{message}}</span>
-						
+						<a href="/index.html">
+							<img class="logo" src="images/logo/sociallocket.png">
+						</a>
+
                     </div>
             </div>
 
 
             <div class="container">
 
-                    <h3>Partials</h3>
+                    <h3 ng-show="hideInfo">Partials</h3>
                     <div ng-view></div>
 
             </div>

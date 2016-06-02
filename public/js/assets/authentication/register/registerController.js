@@ -9,5 +9,5 @@ app.controller('registerController', function($scope, $http, $routeParams){
 		})
 	}
 	
-      $scope.message = "Welcome to the Register Page";  
+      $scope.message = "Register";  
 });

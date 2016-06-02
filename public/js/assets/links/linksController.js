@@ -49,5 +49,5 @@ refresh();
 	
 	
 
-    $scope.message = "Welcome to the Links Page";  
+    $scope.message = "Links";  
 });
