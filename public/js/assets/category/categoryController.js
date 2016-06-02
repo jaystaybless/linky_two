@@ -18,7 +18,7 @@ refresh()
 		console.log('client put ')
 		console.log(category)
 		console.log(category.categories_id)
-		$http.put('/categories/' + category.categories_id).success(function(response) {
+		$http.put('/categories/' + category.categories_id, category).success(function(response) {
 			console.log('put on category route')
 			$scope.hideInfo = false;
 			refresh();

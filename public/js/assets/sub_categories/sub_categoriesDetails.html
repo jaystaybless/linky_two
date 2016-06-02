@@ -1,59 +1,57 @@
 <div>
 	<h1>{{message}}</h1>
 	
-			<!-- add subcategories to this category -->	
-			
-			<table class="table">
+		<!-- add subcategories to this category -->	
+		
+		<table class="table">
 			<h3><strong>{{subMessage}}</strong><h3>
-				<!-- hide elements -->
-				<thead ng-hide="hideInfo">
-					<tr>
-						<th>Category ID</th>
-						<th>Name</th>
-						<th>Description</th>
-						<th>Sub Category ID</th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
+			<!-- hide elements -->
+			<thead ng-hide="hideInfo">
+				<tr>
+					<th>Category ID</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Sub Category ID</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
 				
-				<!-- show elements -->
-				<thead ng-show="hideInfo">
-					<tr>
-						<th>Category ID</th>
-						<th>Name</th>
-						<th>Description</th>
-						<th>Sub Category ID</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="subCategory in subCategoryList">
-						<td ng-hide="hideInfo"> {{subCategory.categories_id}} </td>
-						<td ng-hide="hideInfo"> {{subCategory.name}} </td>  
-						<td ng-hide="hideInfo"> {{subCategory.description}} </td>
-						<td ng-hide="hideInfo">{{subCategory.sub_categories_id}} </td>
-						
-						<!-- <td><button class="btn btn-warning" ng-click="getLinks(subCategory)">Show all Links</button></td> -->						
+			<!-- show elements -->
+			<thead ng-show="hideInfo">
+				<tr>
+					<th>Category ID</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Sub Category ID</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="subCategory in subCategoryList">
+					<td ng-hide="hideInfo"> {{subCategory.categories_id}} </td>
+					<td ng-hide="hideInfo"> {{subCategory.name}} </td>  
+					<td ng-hide="hideInfo"> {{subCategory.description}} </td>
+					<td ng-hide="hideInfo">{{subCategory.sub_categories_id}} </td>							
 					
-						<td ng-show="hideInfo"> {{subCategory.categories_id}} </td>
-						<td ng-show="hideInfo"> <input class="form-control" ng-model="subCategory.name" name="name" {{subCategory.name}} > </td>  
-						<td ng-show="hideInfo"> <input class="form-control" ng-model="subCategory.description" name="description" {{subCategory.description}} ></td>
-						<td ng-show="hideInfo">{{subCategory.sub_categories_id}} </td>
-						<td ng-show="hideInfo"><button class="btn btn-danger" ng-click="remove(subCategory)">Delete</button></td>
-						<td ng-show="hideInfo"><button class="btn btn-info" ng-click="update(subCategory)">Update</button></td>
-						<td><button class="btn btn-warning" ng-model="hideInfo" ng-click="edit(subCategory)"> Edit </button></td>  
+					<td ng-show="hideInfo"> {{subCategory.categories_id}} </td>
+					<td ng-show="hideInfo"> <input class="form-control" ng-model="subCategory.name" name="name" {{subCategory.name}} > </td>  
+					<td ng-show="hideInfo"> <input class="form-control" ng-model="subCategory.description" name="description" {{subCategory.description}} ></td>
+					<td ng-show="hideInfo">{{subCategory.sub_categories_id}} </td>
+					<td ng-show="hideInfo"><button class="btn btn-danger" ng-click="remove(subCategory)">Delete</button></td>
+					<td ng-show="hideInfo"><button class="btn btn-info" ng-click="update(subCategory)">Update</button></td>
+					<td><button class="btn btn-warning" ng-model="hideInfo" ng-click="edit(subCategory)"> Edit </button></td>  
 						<!-- <td><button class="btn btn-warning" ng-click="getLinks(subCategory)">Show all Links</button></td> -->		
+				
 					
-					
-					</tr>	
-				</tbody>
-			</table>
-			<br>
-			<br>
-			<hr>
-						<!-- add links to this sub category -->	
+				</tr>	
+			</tbody>
+		</table>
+		<br>
+		<br>
+		<hr>
+			<!-- add links to this sub category -->	
 			
-			<table class="table">
+		<table class="table">
 			<h4><strong>Add Links to the Sub Category above</strong><h4>
 				<!-- hide elements -->
 				<thead ng-hide="hideInfo">
@@ -98,7 +96,6 @@
 						<td ng-hide="hideInfo"> {{links.name}} </td>
 						<td ng-hide="hideInfo"> {{links.description}} </td>
 						<td ng-hide="hideInfo"> <a href="{{links.url}}" ng-hide="hideInfo">{{links.url}} </a> </td>
-						<!-- <td ng-hide="hideInfo"> <a href="{{links.url}}" class="btn btn-success navbar-btn">Click this to go {{links.links_id}} </a></td> -->
 						<td ng-hide="hideInfo"> {{links.links_id}} </td>
 						<td ng-hide="hideInfo"> {{links.sub_categories_id}} </td>
 
@@ -108,18 +105,13 @@
 						<td ng-show="hideInfo"> <input class="form-control" ng-model="links.name" name="name" {{links.name}} > </td>  
 						<td ng-show="hideInfo"> <input class="form-control" ng-model="links.description" name="description" {{links.description}} ></td>
 						<td ng-show="hideInfo"> <input class="form-control" ng-model="links.url" name="url" {{links.url}} > </td>
-						<td ng-show="hideInfo"> <a href="{{links.url}}" class="btn btn-success navbar-btn">Click this to go {{links.url}} </a></td>	
+						<td ng-show="hideInfo"> <a href="{{links.url}}" class="btn btn-success link-btn">Click this to go {{links.url}} </a></td>	
 						<td ng-show="hideInfo"> {{links.links_id}} </td> 
 						<td ng-show="hideInfo"> {{links.sub_categories_id}} </td>
 						<td ng-show="hideInfo"><button class="btn btn-danger" ng-click="removeLink(links)">Delete</button></td>
 						<td ng-show="hideInfo"><button class="btn btn-info" ng-click="updateLink(links)">Update</button></td>
-						
-						<!-- <td><button class="btn btn-warning" ng-model="hideInfo" ng-click="editLink(hideInfo)">Edit Link</button></td> -->
-					
+									
 					</tr>	
-				
-					
 				</tbody>
-			</table>
-	
+		</table>
 </div>

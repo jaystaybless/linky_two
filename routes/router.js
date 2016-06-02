@@ -482,7 +482,6 @@ router.delete('/links/:id', function(req, res) {
 });
 
 
-
 router.get('*', function (req, res) {
 	res.json('404')
 });
