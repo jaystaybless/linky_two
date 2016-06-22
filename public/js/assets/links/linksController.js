@@ -22,6 +22,8 @@ refresh();
 		console.log($scope.hideInfo)
 	};
 	
+	
+	
 	$scope.updateLink = function (links) {
 		console.log(links)
 		console.log(links.links_id)
@@ -37,7 +39,7 @@ refresh();
 	$scope.removeLink = function (links) {
 		console.log(links)
 		console.log(links.links_id)
-		console.log(links.sub_categories_id)
+		console.log(links.categories_id)
 		$http.delete('/links/' + links.links_id).success(function (response) {
 			console.log(response)
 			$scope.hideInfo = false

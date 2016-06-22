@@ -1,7 +1,7 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-	database: 'linky_test',
+	database: 'linky_test2',
 	host: 'localhost',
 	user: 'root',
 	password: ''
