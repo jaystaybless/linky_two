@@ -20,7 +20,17 @@
 					<th>Click-able URL</th>
 				</tr>
 			</thead>
-			<tbody>		
+			<tbody>	
+				<tr> <!-- ng-repeat="links in linksList" -->
+						<td><input class="form-control" ng-model="links.name" name="name" placeholder="Write a name for your links"></td>
+						<td><input class="form-control" ng-model="links.description" name="description" placeholder="Write a name for description links"></td>
+						<td><input class="form-control" ng-model="links.url" name="url" placeholder="Write a URL"></td>
+						<td></td>
+						<td></td>
+						<td ng-show="hideInfo"></td>
+						<td><button class="btn btn-primary" ng-click="addLink(subCategory)"> Add Link</button></td>						
+					
+				</tr>			
 		
 				<tr ng-repeat="links in linksList" >
 			

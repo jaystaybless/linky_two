@@ -9,7 +9,7 @@ app.controller('linksController', function($scope, $http, $routeParams){
 		$http.get('/links').success(function (response) {
 			console.log(response)
 			$scope.linksList = response;	
-			//$scope.linkLists = "";
+			//$scope.linksList = "";
 			//$scope.hideInfo = false;
 			console.log($scope.hideInfo)
 		});	
@@ -20,6 +20,18 @@ refresh();
 	$scope.edit = function () {
 		$scope.hideInfo = true;
 		console.log($scope.hideInfo)
+	};
+	
+	$scope.addLink = function () {
+		//console.log(categories_id)
+		//console.log($scope.links)
+		//console.log($scope.links.url)
+		$http.post('/links', $scope.links).success(function (response) {
+			console.log(response)
+			$scope.linksList = response;
+			$scope.hideInfo = false;
+			refresh();
+		});	
 	};
 	
 	

@@ -271,6 +271,30 @@ router.get('/links/:id', function(req, res) {
 	
 });
 
+router.post('/links', function(req, res) {
+	console.log('LINKS page recieved a POST request');
+
+	var createLink = 'INSERT INTO links SET ?';
+	var selectAllLinks = 'SELECT * FROM links';
+	
+	var links = {
+		name: req.body.name,
+		description: req.body.description,
+		url: req.body.url
+	};
+
+	connection.query(createLink, links, function(error, result) {
+		if(error) {
+			console.error(error);
+			return;
+		}
+		connection.query(selectAllLinks, function(error, result) {
+			res.json(result)
+			console.log(result)
+		});
+	})
+});
+
 
 router.put('/links/:id', function(req, res) {
 	console.log('LINKS page recieved a PUT request');
